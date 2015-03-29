@@ -8,7 +8,7 @@ import (
 	"time"
 
 	"golang.org/x/oauth2"
-	"gopkg.in/authboss.v0"
+	"github.com/gernest/authboss"
 )
 
 func TestGoogle(t *testing.T) {

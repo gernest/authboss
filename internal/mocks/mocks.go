@@ -8,7 +8,7 @@ import (
 	"net/http"
 	"time"
 
-	"gopkg.in/authboss.v0"
+	"github.com/gernest/authboss"
 )
 
 // MockUser represents all possible fields a authboss User may have

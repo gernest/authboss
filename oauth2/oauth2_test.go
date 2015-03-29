@@ -12,8 +12,8 @@ import (
 
 	"golang.org/x/net/context"
 	"golang.org/x/oauth2"
-	"gopkg.in/authboss.v0"
-	"gopkg.in/authboss.v0/internal/mocks"
+	"github.com/gernest/authboss"
+	"github.com/gernest/authboss/internal/mocks"
 )
 
 var testProviders = map[string]authboss.OAuth2Provider{
