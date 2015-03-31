@@ -5,16 +5,19 @@ import (
 	"errors"
 	"net/http"
 	"net/http/httptest"
-	"os"
 	"testing"
 )
 
-func TestMain(main *testing.M) {
-	RegisterModule("testmodule", testMod)
+func init() {
 	Init()
-	code := main.Run()
-	os.Exit(code)
+	RegisterModule("testmodule", testMod)
 }
+
+//func TestMain(main *testing.M) {
+//	RegisterModule("testmodule", testMod)
+//	code := main.Run()
+//	os.Exit(code)
+//}
 
 func TestAuthBossInit(t *testing.T) {
 	Cfg = NewConfig()
