@@ -115,6 +115,9 @@ type Config struct {
 	// Mailer is the mailer being used to send e-mails out. Authboss defines two loggers for use
 	// LogMailer and SMTPMailer, the default is a LogMailer to io.Discard.
 	Mailer Mailer
+
+	// This is for use in my kesho app the templates for rendering auth
+	ResponseTmpl  *template.Template
 }
 
 // NewConfig creates a config full of healthy default values.
