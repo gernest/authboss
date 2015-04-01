@@ -117,7 +117,7 @@ type Config struct {
 	Mailer Mailer
 
 	// This is for use in my kesho app the templates for rendering auth
-	ResponseTmpl  *template.Template
+	ResponseTmpl  map[string]*template.Template
 }
 
 // NewConfig creates a config full of healthy default values.

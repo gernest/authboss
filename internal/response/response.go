@@ -16,6 +16,7 @@ import (
 	"strings"
 	"github.com/gernest/authboss"
 
+	"log"
 )
 
 var (
@@ -42,6 +43,10 @@ type Templates map[string]*template.Template
 // templates as necessary.
 func LoadTemplates(layout *template.Template, path string, files ...string) (Templates, error) {
 	m := make(Templates)
+
+	if authboss.Cfg.ResponseTmpl!=nil {
+		return Templates(authboss.Cfg.ResponseTmpl),nil
+	}
 
 	for _, file := range files {
 		b, err := ioutil.ReadFile(filepath.Join(path, file))
@@ -95,6 +100,7 @@ func (t Templates) Render(ctx *authboss.Context, w http.ResponseWriter, r *http.
 	buffer := &bytes.Buffer{}
 	err := tpl.ExecuteTemplate(buffer, tpl.Name(), data)
 	if err != nil {
+		log.Println(err)
 		return authboss.RenderErr{tpl.Name(), data, err}
 	}
 
