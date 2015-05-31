@@ -77,8 +77,10 @@ func LoadTemplates(layout *template.Template, path string, files ...string) (Tem
 
 // Render renders a view with xsrf and flash attributes.
 func (t Templates) Render(ctx *authboss.Context, w http.ResponseWriter, r *http.Request, name string, data authboss.HTMLData) error {
+	log.Println("rendering ",name)
 	tpl, ok := t[name]
 	if !ok {
+		log.Println("Found nothing")
 		return authboss.RenderErr{tpl.Name(), data, ErrTemplateNotFound}
 	}
 
@@ -103,6 +105,7 @@ func (t Templates) Render(ctx *authboss.Context, w http.ResponseWriter, r *http.
 		log.Println(err)
 		return authboss.RenderErr{tpl.Name(), data, err}
 	}
+	log.Println("Output", buffer.String())
 
 	_, err = io.Copy(w, buffer)
 	if err != nil {
